@@ -5,14 +5,14 @@ segment .text
 Question:
 	mov ebx, edi
 	jmp _testar
-        ret
+  ret
 
 _testar:
 	cmp ebx, 0
-        je _par
-        jl _impar
-        sub ebx, 2
-        jmp _testar	
+  je _par
+  jl _impar
+  sub ebx, 2
+  jmp _testar	
 
 _par:
 	mov eax, 1
@@ -21,4 +21,3 @@ _par:
 _impar:
 	mov eax, 0
 	ret
-
