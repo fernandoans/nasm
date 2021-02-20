@@ -3,7 +3,7 @@ global PassarParam
 segment .text
 
 PassarParam:
-  mov eax, edi   ; 1o. Param
-  ; add eax, esi   ; adiciona o 2o. Param
-  sub eax, esi
-  ret
+    mov eax, edi   ; 1º Parâmetro movendo para EAX
+    add eax, esi   ; 2º Parâmetro adicionar a EAX
+    add eax, edx   ; 3º Parâmetro adicionar a EAX
+    ret
