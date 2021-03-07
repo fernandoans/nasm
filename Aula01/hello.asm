@@ -5,21 +5,22 @@
 ; $ ld -s -o hello hello.o
 ; $ ./hello
 ; ------------------------
-section .data:
-  msg db 'Hello, world!', 0xa
-  len equ $ - msg
+segment .data
+  msg db 'Hello, world!', 0xA, 0xD
+  len equ $- msg
 
-section .text:
+segment .text
 
 global _start
 
 _start:
-  mov edx, len
-  mov ecx, msg
-  mov ebx, 1
   mov eax, 4
+  mov ebx, 1
+  mov ecx, msg
+  mov edx, len
   int 0x80
+
 ; saida
   mov eax, 1
-  mov ebx, 0
+  mov ebx, 5
   int 0x80
