@@ -27,41 +27,45 @@ _start:
   push      liv1
   push      liv2
   push      liv3
-  ; Retirar os livros da pilha
+  ; Pegar um livro da pilha
   pop       rdi
   call      _imprimir
   pop       rdi
   call      _imprimir
   pop       rdi
   call      _imprimir
-  
-  ; finalizar
+  ; Finalizar
   mov       rax, SYS_EXIT
   mov       rbx, EXIT_SUCESS
   syscall
 
 ;-------------------------------  
 ; Função de Impressão
-; Recebe o valor por rdi
+; Recebe o valor String em rdi
 ;-------------------------------  
 _imprimir:
-  call      _ctCaracteres
-  mov       rax, SYS_WRITE
-  mov       rsi, rdi
-  mov       rdi, STDOUT
+  call  _ctCaracteres
+  mov   rax, SYS_WRITE
+  mov   rsi, rdi
+  mov   rdi, STDOUT
   syscall
   ret
 
-_ctCaracteres:  ; while for
-  mov       rbx, rdi
-  mov       rdx, 0
+_ctCaracteres:
+  mov   rbx, rdi
+  mov   rdx, 0
 fazLoop:
-  cmp       byte[rbx], NULL
-  je        termina
-  inc       rdx
-  inc       rbx
-  jmp       fazLoop
+  cmp   byte[rbx], NULL
+  je    termina
+  inc   rdx
+  inc   rbx
+  jmp   fazLoop
 termina:
-  ret       
+  ret  
+
+
+
+
+
 
 

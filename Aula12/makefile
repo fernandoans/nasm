@@ -6,3 +6,4 @@ all: $(NOME).o
 
 %.o: %.asm
 	nasm -f elf64 $<
+	
