@@ -26,18 +26,20 @@ converter_valor:
 mostrar_valor:
   lea esi, [buffer]
   call int_to_string
+  mov ecx, eax
+  mov edx, 10
   mov eax, 4
   mov ebx, 1
-  mov ecx, buffer
-  mov edx, 10
   int 0x80
   ret
 
+; ---------------------------------------
 ; Converte String para Inteiro
 ; Entrada: ESI ECX
-; Saida: EAX com o valor
+; Saida..: EAX com o valor
+; ---------------------------------------
 string_to_int:
-  xor ebx, ebx;
+   xor ebx, ebx;
 .prox_digito:
    movzx eax, byte[esi]
    inc esi
@@ -48,9 +50,11 @@ string_to_int:
    mov eax, ebx
    ret
 
+; ---------------------------------------
 ; Conveter Inteiro para string
 ; Entrada: EAX ESI
-; Saida EAX
+; Saida..: EAX
+; ---------------------------------------
 int_to_string:
   add esi, 9
   mov byte [esi], 0
