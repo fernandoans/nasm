@@ -25,7 +25,7 @@ escrever:
   mov [fd], eax  
   mov eax, WRITE_FILE
   mov ebx, [fd]
-  mov ecx, msg  ; 1 x  2 w  3 wx 4 r 5 rx 6 rw 7 rwx
+  mov ecx, msg
   mov edx, tamMsg
   int SYS_CALL
 

@@ -11,7 +11,7 @@ segment .data
   STDOUT        equ 0x1  ; System.out
   STDERR        equ 0x2  ; System.err
 
-  SYS_READ      equ 0x0  ; read
+  SYS_READ      equ 0x3  ; read
   SYS_WRITE     equ 0x4  ; print
 
   SYS_CALL      equ 0x80 ; inteiro final

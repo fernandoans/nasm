@@ -4,7 +4,7 @@
 %include 'bibliotecaE.inc'
 
 SECTION .data
-    arq     db "Musica.txt", NULL
+    arq     db "Musica.txt"
     tam     equ 1024    ; Tam do Arquivo
 
 SECTION .bss
