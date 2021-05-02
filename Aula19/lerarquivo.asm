@@ -21,24 +21,28 @@ _start:
     mov     ecx, STDIN
     int     SYS_CALL
 
-    mov     [fd], eax  ; Armazenando o File Descriptor
 
+ler:
+    mov     [fd], eax  ; Armazenando o File Descriptor
     mov     eax, READ_FILE
     mov     ebx, [fd]
     mov     ecx, buffer
     mov     edx, tam
     int     SYS_CALL
 
+saidaNaConsole:
     mov     eax, SYS_WRITE
     mov     ebx, STDOUT
     mov     ecx, buffer
     mov     edx, tam
     int     SYS_CALL
 
+fechar:
     mov     eax, CLOSE_FILE
     mov     ebx, [fd]
     int     SYS_CALL
 
+termino:
     mov     eax, SYS_EXIT
     mov     ebx, EXIT_SUCESS
     int     SYS_CALL
