@@ -21,7 +21,6 @@ _start:
     mov     ecx, STDIN
     int     SYS_CALL
 
-
 ler:
     mov     [fd], eax  ; Armazenando o File Descriptor
     mov     eax, READ_FILE

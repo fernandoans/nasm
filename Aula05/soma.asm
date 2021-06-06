@@ -35,7 +35,7 @@ mostrar_valor:
 
 ; ---------------------------------------
 ; Converte String para Inteiro
-; Entrada: ESI ECX
+; Entrada: ESI (valor conv) ECX (tamanho)
 ; Saida..: EAX com o valor
 ; ---------------------------------------
 string_to_int:
@@ -52,7 +52,7 @@ string_to_int:
 
 ; ---------------------------------------
 ; Conveter Inteiro para string
-; Entrada: EAX ESI
+; Entrada: EAX (valor conv) ESI (valor buffer)
 ; Saida..: EAX
 ; ---------------------------------------
 int_to_string:
