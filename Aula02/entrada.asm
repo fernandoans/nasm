@@ -1,57 +1,42 @@
+; entrada.asm	
 ; Programa para Entrada de Dados
-
-SYS_EXIT  equ 1
-RET_EXIT  equ 5
-SYS_READ  equ 3
-SYS_WRITE equ 4
-STD_IN    equ 0
-STD_OUT   equ 1
-MAX_IN    equ 10
-
+;
 segment .data
+  LF        equ 0xA  ; Line Feed
+  NULL      equ 0xD  ; Final da String
+  SYS_EXIT  equ 0x1  ; Codigo de chamada para finalizar
+  RET_EXIT  equ 0x0  ; Operacao com Sucesso
+  STD_IN    equ 0x0  ; Entrada padrao
+  STD_OUT   equ 0x1  ; Saida padrao
+  SYS_READ  equ 0x3  ; Operacao de Leitura
+  SYS_WRITE equ 0x4  ; Operacao de Escrita
+  SYS_CALL  equ 0x80 ; Envia informacao ao SO
+
+section .data
   msg db "Entre com seu nome: ", 0xA, 0xD
-  len equ $- msg
+  tam equ $- msg
 
-segment .bss
-  nome resb 2
+section .bss
+  nome resb 1
 
-segment .text
+section .text
 
 global _start
 
 _start:
-  ; ax bx cx dx -> e
   mov eax, SYS_WRITE
   mov ebx, STD_OUT
   mov ecx, msg
-  mov edx, len
-  int 0x80
+  mov edx, tam
+  int SYS_CALL
 
   ; Entrada Dados
   mov eax, SYS_READ
   mov ebx, STD_IN
   mov ecx, nome
-  mov edx, MAX_IN
-  int 0x80
-  
-exit:
+  mov edx, 0xA
+  int SYS_CALL
+
   mov eax, SYS_EXIT
   mov ebx, RET_EXIT ; xor ebx, ebx
-  int 0x80
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  int SYS_CALL

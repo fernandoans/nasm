@@ -3,7 +3,7 @@
 ; -------------------------------------
 segment .data
   LF            equ 0xA  ; Line Feed
-  NULL          equ 0x0  ; Final da String
+  NULL          equ 0xD  ; Final da String
   EXIT_SUCESS   equ 0x0  ; Operação com Sucesso
   SYS_EXIT      equ 0x1  ; Codigo de chamada para finalizar
 
