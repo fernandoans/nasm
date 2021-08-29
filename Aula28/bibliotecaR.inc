@@ -30,7 +30,7 @@ showMsg:
   pop   rax
   mov   rsi, rax
   mov   rax, STD_OUT
-  mov   rdi, SYS_READ
+  mov   rdi, SYS_WRITE
   syscall
   pop   rdx
   pop   rsi
