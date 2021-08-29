@@ -13,7 +13,7 @@ segment .data
   SYS_CALL  equ 0x80 ; Envia informacao ao SO
 
 section .data
-  msg db "Entre com seu nome: ", 0xA, 0xD
+  msg db "Entre com seu nome: ", LF, NULL
   tam equ $- msg
 
 section .bss

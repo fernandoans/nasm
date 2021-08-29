@@ -11,7 +11,7 @@ SECTION .text
 global _start:
 
 _start:
-    mov     eax, [array + 4 * 0]
+    mov     eax, [array + 4 * 1]
     call    int2string
     call    saidaResultado
 

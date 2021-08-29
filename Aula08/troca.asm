@@ -1,6 +1,6 @@
-global GetValorASM
+section .text
 
-segment .text
+global GetValorASM
 
 GetValorASM:
   mov eax, edi

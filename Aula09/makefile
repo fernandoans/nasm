@@ -1,3 +1,4 @@
+
 runme: questao.cpp questao.o
 	g++ questao.o questao.cpp -o runme
 

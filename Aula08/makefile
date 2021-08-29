@@ -1,5 +1,8 @@
-runme: troca.cpp troca.o
-	g++ troca.o troca.cpp -o runme
+NOME = troca
 
-troca.o: troca.asm
-	nasm -f elf64 troca.asm -o troca.o
+all: $(NOME).cpp $(NOME).o
+	g++ $(NOME).o $(NOME).cpp -o $(NOME)
+	rm -rf $(NOME).o
+
+%.o: %.asm
+	nasm -f elf64 $<
