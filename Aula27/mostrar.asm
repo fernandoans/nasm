@@ -27,8 +27,8 @@ showMsg:
   mov   rdx, rax
   pop   rax
   mov   rsi, rax
-  mov rax, 0x1 ; System Call escrita
-  mov rdi, 0x1 ; Informação saida
+  mov   rax, 0x1 ; System Call escrita
+  mov   rdi, 0x1 ; Informação saida
   syscall
   pop   rdx
   pop   rsi

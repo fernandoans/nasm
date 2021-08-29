@@ -1,7 +1,8 @@
-NOME = fibo
+NOME = fibo2
 
-runme: ${NOME}.cpp ${NOME}.o
-	   g++ ${NOME}.o ${NOME}.cpp -o runme
+all: $(NOME).cpp $(NOME).o
+	g++ $(NOME).o $(NOME).cpp -o $(NOME)
+	rm -rf $(NOME).o
 
-${NOME}.o: ${NOME}.asm
-		nasm -felf64 ${NOME}.asm -o ${NOME}.o
+%.o: %.asm
+	nasm -f elf64 $<

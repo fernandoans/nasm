@@ -1,7 +1,7 @@
+segment .text
+
 global Teste1
 global Teste2
-
-segment .text
 
 Teste1:
     cmp     edi, esi
@@ -25,17 +25,17 @@ Teste2:
     je      volta4
     cmp     edi, 4
     je      volta5
-    mov     eax, $0
+    mov     eax, $0x0
     ret
 
 volta5:
-    mov     eax, $5
+    mov     eax, $0x5
     ret    
 
 volta6:
-    mov     eax, $6
+    mov     eax, $0x6
     ret    
 
 volta4:
-    mov     eax, $4
+    mov     eax, $0x4
     ret

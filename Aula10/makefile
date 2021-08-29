@@ -1,5 +1,8 @@
-runme: param.cpp param.o
-	   g++ param.o param.cpp -o runme
+NOME = param
 
-param.o: param.asm
-	     nasm -felf64 param.asm -o param.o	   
+all: $(NOME).cpp $(NOME).o
+	g++ $(NOME).o $(NOME).cpp -o $(NOME)
+	rm -rf $(NOME).o
+
+%.o: %.asm
+	nasm -f elf64 $<   

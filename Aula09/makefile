@@ -1,6 +1,8 @@
+NOME = questao
 
-runme: questao.cpp questao.o
-	g++ questao.o questao.cpp -o runme
+all: $(NOME).cpp $(NOME).o
+	g++ $(NOME).o $(NOME).cpp -o $(NOME)
+	rm -rf $(NOME).o
 
-questao.o: questao.asm
-	nasm -felf64 questao.asm -o questao.o
+%.o: %.asm
+	nasm -f elf64 $<
