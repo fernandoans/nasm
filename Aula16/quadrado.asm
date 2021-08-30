@@ -4,12 +4,12 @@
 %include 'bibliotecaE.inc'
 
 SECTION .data
-   estrela  DB  '*', LF, NULL
-   altura   EQU 8
+   estrela: DB  '*', LF, NULL
+   altura:  EQU 4
 
 SECTION .text
 
-global _start:
+global _start
 
 _start:
     mov     edi, altura
@@ -26,8 +26,8 @@ impLinha:
     call    impEstrela
     sub     esi, 0x1
     cmp     esi, 0x1
-    je      impEstrelaFinal
     jg      impLinha
+    je      impEstrelaFinal
     ret
 
 saida:
@@ -39,17 +39,17 @@ saida:
 ; Funções
 ;--------------------------------------
 impEstrela: ; print('*')
-    mov     edx, 1
-    mov     ecx, estrela
     mov     eax, SYS_WRITE
     mov     ebx, STDOUT
+    mov     ecx, estrela
+    mov     edx, 0x1
     int     SYS_CALL
     ret
 
 impEstrelaFinal: ; println('*')
-    mov     edx, 2
-    mov     ecx, estrela
     mov     eax, SYS_WRITE
     mov     ebx, STDOUT
+    mov     ecx, estrela
+    mov     edx, 0x2
     int     SYS_CALL
     ret

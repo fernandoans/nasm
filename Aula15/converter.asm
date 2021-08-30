@@ -1,22 +1,24 @@
 ; -----------------------------------
 ; Programa de Conversão - Hex > Dec
 ; -----------------------------------
+%include 'bibliotecaE.inc'
+
 SECTION .data
-    hexa    equ     0x30
+    hexa    equ     0xFF
 
 SECTION .bss
-    deci    resb    11    
+    deci    resb    1   
 
 SECTION .text    
 
 global _start
 
 _start:
-    mov     esi, deci+11
+    mov     esi, deci+0xB
     mov     byte[esi], 0xA   ; adicionando '\n'
     mov     eax, hexa
     mov     ebx, 0xA         ; divisor
-    mov     ecx, 1           ; tamanho
+    mov     ecx, 0x1         ; tamanho
 
 proximo_digito:
     inc     ecx
@@ -32,13 +34,11 @@ proximo_digito:
 mostrar:
     mov     edx, ecx         ; tamanho
     mov     ecx, esi         ; String
-    mov     ebx, 1           ; Stout
-    mov     eax, 4           ; SysWrite
-    int     0x80             ; chamada do Kernel
+    mov     eax, SYS_WRITE   ; SysWrite
+    mov     ebx, STD_OUT     ; Stout
+    int     SYS_CALL         ; chamada do Kernel
 
 saida:
-    mov     ebx, 0           ; Retorno
-    mov     eax, 1           ; SysExit
-    int     0x80             ; chamada do Kernel    
-
-
+    mov     eax, SYS_EXIT    ; SysExit
+    mov     ebx, RET_EXIT    ; Retorno
+    int     SYS_CALL         ; chamada do Kernel    
