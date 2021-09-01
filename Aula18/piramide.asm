@@ -21,13 +21,13 @@ SECTION .bss
 
 SECTION .text
 
-global _start:
+global _start
 
 _start:
-   mov      byte[altura], 0x8
+   mov      byte[altura], 0x4
    mov      byte[linha], 0x1
    mov      byte[qtdestrelas], 0x1
-   mov      byte[qtdlinhas], 0x8
+   mov      byte[qtdlinhas], 0x4
 
 inicio:
    mov      edi, dword[altura]
@@ -47,8 +47,7 @@ impEspacos:
    jl       finalImpEspaco
    call     impEspaco
    sub      edi, 0x1
-   cmp      edi, 0x0
-   jg       impEspacos
+   jmp      impEspacos
 
 finalImpEspaco:
    ret      
@@ -56,11 +55,9 @@ finalImpEspaco:
 impEstrelas:
    cmp      edi, 0x1
    je       impEstrelaFinal
-   sub      edi, 0x1
    call     impEstrela
-   cmp      edi, 0x0
-   jg       impEstrelas
-   ret
+   sub      edi, 0x1
+   jmp      impEstrelas
 
 saida:
    mov      eax, SYS_EXIT
