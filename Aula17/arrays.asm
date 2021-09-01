@@ -4,15 +4,15 @@
 %include 'bibliotecaE.inc'
 
 SECTION .data
-    array      DD 1, 2, 3, 4, 5
+    array: DD 10, 22, 13, 14, 55
 
 SECTION .text
 
 global _start:
 
 _start:
-    mov     eax, [array + 4 * 1]
-    call    int2string
+    mov     eax, [array + 4 * 0]
+    call    int_to_string
     call    saidaResultado
 
 saida:

@@ -30,7 +30,7 @@ segment .text
 ; Entrada: inteiro em EAX
 ; Saida..: BUFFER (usar EDX o TAM_BUFFER)
 ; ---------------------------------------------
-int2string:
+int_to_string:
   lea   esi, [BUFFER]
   add   esi, 0x9
   mov   byte[esi], 0xA
