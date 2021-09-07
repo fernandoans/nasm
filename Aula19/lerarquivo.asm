@@ -4,12 +4,12 @@
 %include 'bibliotecaE.inc'
 
 SECTION .data
-    arq     db "Musica.txt"
-    tam     equ 1024    ; Tam do Arquivo
+    nom_arq: db "Musica.txt"
+    tam_arq: equ 1024 ; Tam do Arquivo
 
 SECTION .bss
-    fd      resb 4      ; File Descriptor
-    buffer  resb 1024   ; Descarregar Memória
+    fd: resb 4        ; File Descriptor
+    buffer: resb 1024 ; Descarregar Memória
 
 SECTION .text
 
@@ -17,8 +17,8 @@ global _start:
 
 _start:
     mov     eax, OPEN_FILE
-    mov     ebx, arq
-    mov     ecx, STDIN
+    mov     ebx, nom_arq
+    mov     ecx, OPEN_READ
     int     SYS_CALL
 
 ler:
@@ -26,14 +26,14 @@ ler:
     mov     eax, READ_FILE
     mov     ebx, [fd]
     mov     ecx, buffer
-    mov     edx, tam
+    mov     edx, tam_arq
     int     SYS_CALL
 
 saidaNaConsole:
     mov     eax, SYS_WRITE
-    mov     ebx, STDOUT
+    mov     ebx, STD_OUT
     mov     ecx, buffer
-    mov     edx, tam
+    mov     edx, tam_arq
     int     SYS_CALL
 
 fechar:
@@ -43,5 +43,5 @@ fechar:
 
 termino:
     mov     eax, SYS_EXIT
-    mov     ebx, EXIT_SUCESS
+    mov     ebx, RET_EXIT
     int     SYS_CALL
