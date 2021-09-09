@@ -36,5 +36,5 @@ fechar:
 
 termino:
   mov eax, SYS_EXIT
-  mov ebx, EXIT_SUCESS
+  mov ebx, RET_EXIT
   int SYS_CALL
