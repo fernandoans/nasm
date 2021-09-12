@@ -12,6 +12,6 @@ section .text
 global _start
 
 _start:
-  mov eax, 1
-  mov ebx, 0
+  mov eax, 0x1
+  mov ebx, 0x0
   int 0x80
