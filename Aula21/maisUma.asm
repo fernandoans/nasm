@@ -6,7 +6,7 @@
 SECTION .data
     msg2    db "Aqui temos mais uma linha", LF
     tamMsg2 equ $ - msg2
-    arq     db 'Hello', NULL
+    arq     db 'Hello'
     tamArq  equ $ - arq
     fd      dq 0 ; File Descriptor
 

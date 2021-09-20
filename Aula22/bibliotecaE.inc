@@ -32,9 +32,3 @@ segment .data
   SEEK_SET      equ 0x0    ; Inicio do Arquivo
   SEEK_CUR      equ 0x1    ; Posição do Cursor
   SEEK_END      equ 0x2    ; Final do Arquivo
-
-;Posicionar um Arquivo
-; eax=19 (seek_file)
-; ebx=file descriptor
-; ecx=pointed to data buffer
-; edx=SEEK?
