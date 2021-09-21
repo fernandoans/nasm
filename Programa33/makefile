@@ -1,4 +1,4 @@
-NOME = converte
+NOME = xadrez
 
 all: $(NOME).o
 	ld -s -o $(NOME) $(NOME).o
@@ -6,4 +6,3 @@ all: $(NOME).o
 
 %.o: %.asm
 	nasm -f elf64 $<
-	

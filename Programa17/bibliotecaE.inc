@@ -22,6 +22,46 @@ segment .bss
 
 segment .text
 
+; ---------------------------------------
+; Converte String para Inteiro
+; ---------------------------------------
+; Entrada: ESI (valor conv) ECX (tamanho)
+; Saida..: EAX com o valor
+; ---------------------------------------
+string_to_int:
+   xor ebx, ebx
+.prox_digito:
+   movzx eax, byte[esi]
+   inc esi
+   sub al, '0'
+   imul ebx, 0xA
+   add ebx, eax ; ebx = ebx*10 + eax
+   loop .prox_digito ; while (--ecx)
+   mov eax, ebx
+   ret
+
+; ---------------------------------------
+; Converte Inteiro para String
+; ---------------------------------------
+; Entrada: inteiro em EAX
+; Saida..: BUFFER (usar EDX o TAM_BUFFER)
+; ---------------------------------------
+int_to_string:
+  lea   esi, [BUFFER]
+  add   esi, 0x9
+  mov   byte[esi], 0xA
+  mov   ebx, 0xA
+
+.prox_digito:
+  xor   edx, edx
+  div   ebx
+  add   dl, '0'
+  dec   esi
+  mov   [esi], dl
+  test  eax, eax
+  jnz   .prox_digito
+  ret  
+
 ; ---------------------------------------------
 ; Saida do Resultado no Terminal
 ; ---------------------------------------------
