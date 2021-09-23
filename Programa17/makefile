@@ -1,4 +1,4 @@
-NOME = parImpar
+NOME = testResto
 
 all: $(NOME).o
 	ld -s -o $(NOME) $(NOME).o

@@ -7,8 +7,8 @@ segment .data
   EXIT_SUCESS   equ 0x0  ; Operação com Sucesso
   SYS_EXIT      equ 0x1  ; Codigo de chamada para finalizar
 
-  STDIN         equ 0x0  ; System.in
-  STDOUT        equ 0x1  ; System.out
+  STD_IN        equ 0x0  ; System.in
+  STD_OUT       equ 0x1  ; System.out
   STDERR        equ 0x2  ; System.err
 
   SYS_READ      equ 0x0  ; read
@@ -56,7 +56,7 @@ int_to_string:
 ; ---------------------------------------------
 saidaResultado:
   mov     eax, SYS_WRITE
-  mov     ebx, STDOUT
+  mov     ebx, STD_OUT
   mov     ecx, BUFFER
   mov     edx, TAM_BUFFER
   int     SYS_CALL

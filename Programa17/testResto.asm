@@ -5,8 +5,9 @@ section .text
 global _start
 
 _start:
+  mov edi, 0x1
   mov edx, 0
-  mov eax, 57
+  mov eax, edi
   mov ebx, 2
   div ebx
 
