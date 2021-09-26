@@ -1,4 +1,4 @@
-NOME = converte
+NOME = tstBiblioteca
 
 all: $(NOME).o
 	ld -s -o $(NOME) $(NOME).o
