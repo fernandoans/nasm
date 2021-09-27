@@ -8,16 +8,16 @@ section .data
     tamMsg      equ  $ - msg
     arq         db   'Nota', STDIN
     tamArq      equ  $ - arq
-    fd          dq   0
     dispMsg     db   "Nota Gravadas!", LF, NULL
     tamDispMsg  equ  $ - dispMsg 
+    fd          dq   0
 
 section .bss
     inpt        resb    2
 
 section .text
 
-global _start:
+global _start
 
 _start:
     mov     eax, OPEN_FILE
@@ -27,14 +27,14 @@ _start:
     int     SYS_CALL
     mov     [fd], eax
 
-mostrar:
+mostrarMsg:
     mov     eax, SYS_WRITE
     mov     ebx, STDOUT
     mov     ecx, msg
     mov     edx, tamMsg
     int     SYS_CALL
 
-solicitar:
+obterNota:
     mov     eax, SYS_READ
     mov     ebx, STDIN
     mov     ecx, inpt
@@ -53,7 +53,7 @@ escreverNoArquivo:
     mov     ecx, inpt
     mov     edx, 3
     int     SYS_CALL
-    jmp     mostrar
+    jmp     mostrarMsg
 
 fecharArquivo:
     mov     eax, CLOSE_FILE
