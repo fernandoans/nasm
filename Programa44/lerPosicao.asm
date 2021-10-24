@@ -38,7 +38,7 @@ ler:
 
 saidaNoConsole:
     mov     eax, SYS_WRITE
-    mov     ebx, STDOUT
+    mov     ebx, STD_OUT
     mov     ecx, buffer
     mov     edx, tam
     int     SYS_CALL

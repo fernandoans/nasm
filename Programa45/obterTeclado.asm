@@ -6,7 +6,7 @@
 section .data
     msg         db   "Entre com o valor da Nota (formato 00 a 10 ou 20 para terminar):", LF, NULL
     tamMsg      equ  $ - msg
-    arq         db   'Nota', STDIN
+    arq         db   "Nota"
     tamArq      equ  $ - arq
     dispMsg     db   "Nota Gravadas!", LF, NULL
     tamDispMsg  equ  $ - dispMsg 
@@ -29,14 +29,14 @@ _start:
 
 mostrarMsg:
     mov     eax, SYS_WRITE
-    mov     ebx, STDOUT
+    mov     ebx, STD_OUT
     mov     ecx, msg
     mov     edx, tamMsg
     int     SYS_CALL
 
 obterNota:
     mov     eax, SYS_READ
-    mov     ebx, STDIN
+    mov     ebx, STD_IN
     mov     ecx, inpt
     mov     edx, 3
     int     SYS_CALL
@@ -62,7 +62,7 @@ fecharArquivo:
 
 mostrarMsgFinal:
     mov     eax, SYS_WRITE
-    mov     ebx, STDOUT
+    mov     ebx, STD_OUT
     mov     ecx, dispMsg
     mov     edx, tamDispMsg
     int     SYS_CALL

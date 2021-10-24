@@ -1,12 +1,12 @@
 %include 'bibliotecaE.inc'
 
 section .data
-    arq         db 'Nota', STDIN
+    arq         db 'Nota'
     tam         equ 3
     fd          dq 0
     dispMsg     db "Resultado: "
     tamDispMsg  equ $-dispMsg
-    espaco      db ' ', LF, NULL
+    salto       db ' ', LF
     tamValor    db 0
 
 section .bss
@@ -64,28 +64,24 @@ dividePor2:
 
 resultado:
     mov     eax, SYS_WRITE
-    mov     ebx, STDOUT
+    mov     ebx, STD_OUT
     mov     ecx, dispMsg
     mov     edx, tamDispMsg
     int     SYS_CALL
 
     mov     eax, [soma]
-    lea     esi, [buffer]
     call    int_to_string
-    mov     [valT], eax
-    mov     edx, eax
-    call    _strlen
+    mov     ecx, eax
+    call    tamStr
 
-    mov     edx, eax
     mov     eax, SYS_WRITE
-    mov     ebx, STDOUT
-    mov     ecx, [valT]
+    mov     ebx, STD_OUT
     int     SYS_CALL
 
     mov     eax, SYS_WRITE
-    mov     ebx, STDOUT
-    mov     ecx, espaco
-    mov     edx, 2
+    mov     ebx, STD_OUT
+    mov     ecx, salto
+    mov     edx, 0x2
     int     SYS_CALL
 
     jmp     lerLinha1

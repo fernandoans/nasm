@@ -7,9 +7,9 @@ segment .data
   EXIT_SUCESS   equ 0x0    ; Operação com Sucesso
   SYS_EXIT      equ 0x1    ; Codigo de chamada para finalizar
 
-  STDIN         equ 0x0    ; System.in
-  STDOUT        equ 0x1    ; System.out
-  STDERR        equ 0x2    ; System.err
+  STD_IN         equ 0x0    ; System.in
+  STD_OUT        equ 0x1    ; System.out
+  STD_ERR        equ 0x2    ; System.err
 
   SYS_READ      equ 0x3    ; read
   SYS_WRITE     equ 0x4    ; print
@@ -34,7 +34,7 @@ segment .data
   SEEK_END      equ 0x2    ; Final do Arquivo
 
 segment .bss
-  buffer: resb 10
+  BUFFER: resb 0xA
 
 segment .text
 
@@ -61,9 +61,10 @@ string_to_int:
 ; Saida..: EAX
 ; ---------------------------------------
 int_to_string:
-  add esi, 9
-  mov byte [esi], 0
-  mov ebx, 10
+  lea esi, [BUFFER]
+  add esi, 0x9
+  mov byte [esi], 0x0
+  mov ebx, 0xA
 .prox_digito:
   xor edx, edx
   div ebx
@@ -77,19 +78,16 @@ int_to_string:
 
 ; ---------------------------------------
 ; Acha o tamanho total da String
-; Entrada: EDX (valor STR)
-; Saida..: EAX
+; Entrada: ECX (valor STR)
+; Saida..: EDX
 ; ---------------------------------------
-_strlen:
-  xor   ecx, ecx
-
-_strlen_next:
-  cmp   [edx], byte 0  ; null byte yet?
-  jz    _strlen_null   ; yes, get out
-  inc   ecx            ; char is ok, count it
-  inc   edx            ; move to next char
-  jmp   _strlen_next   ; process again
-
-_strlen_null:
-  mov   eax, ecx       ; rcx = the length (put in rax)
-  ret                  ; get out    
+tamStr:
+  mov edx, ecx
+proxchar:
+  cmp byte[edx], byte 0
+  jz terminei
+  inc edx
+  jmp proxchar
+terminei:
+  sub edx, ecx
+  ret   
