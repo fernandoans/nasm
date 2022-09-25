@@ -12,7 +12,6 @@ section .data
 section .bss
     val1    resw    2
     val2    resw    2
-    val3    resw    2
     soma    resb    10
 
 section .text
