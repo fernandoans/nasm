@@ -1,0 +1,3 @@
+Hello 64 Bits!
+Sou um simples arquivo texto...
+E estou aqui.
